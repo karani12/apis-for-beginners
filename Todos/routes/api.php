@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,14 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware("auth:sanctum")->group(function(){
-    Route::prefix("auth")->group(function(){
+Route::prefix("auth")->group(function(){
 
-        Route::post("logout", "Auth\AuthController@logout");
-        Route::post("signup", "Auth\AuthController@register");
-        Route::post("login", "Auth\AuthController@login");
-        Route::post("reset-password", "Auth\AuthController@resetPassword");
-        Route::post("forgot-password", "Auth\AuthController@forgotPassword");
-    });
-
+    Route::post("logout", AuthController::class . "@logout");
+    Route::post("signup", AuthController::class . "@register");
+    Route::post("login", AuthController::class . "@login")->name("login");
+    Route::post("reset-password", AuthController::class . "@resetPassword");
+    Route::post("forgot-password", AuthController::class . "@forgotPassword");
 });
+
+
