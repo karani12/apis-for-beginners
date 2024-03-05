@@ -10,9 +10,9 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Logout a user'
+      title: ''
       description: ''
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
@@ -65,7 +65,7 @@ endpoints:
         name: name
         description: 'The name of the user'
         required: true
-        example: iusto
+        example: ut
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -74,7 +74,7 @@ endpoints:
         name: email
         description: 'The email of the user'
         required: true
-        example: krystal.lockman@example.org
+        example: cgrimes@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -83,7 +83,7 @@ endpoints:
         name: password
         description: 'The password of the user'
         required: true
-        example: 'JnS,ssk~`N*g&9biK0s'
+        example: 'FC+-Jaioj0"{Bzo'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -92,53 +92,23 @@ endpoints:
         name: password_confirmation
         description: 'The password confirmation of the user'
         required: true
-        example: omnis
+        example: impedit
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: iusto
-      email: krystal.lockman@example.org
-      password: 'JnS,ssk~`N*g&9biK0s'
-      password_confirmation: omnis
+      name: ut
+      email: cgrimes@example.org
+      password: 'FC+-Jaioj0"{Bzo'
+      password_confirmation: impedit
     fileParameters: []
     responses:
       -
-        status: 201
-        content: |-
-          "data": {
-          "id": 1,
-          "name": "John Doe",
-          "email": "example@mail.com"
-          "created_at": "2021-08-12 12:00:00",
-          "updated_at": "2021-08-12 12:00:00"
-          }
+        status: 200
+        content: '{"data":{"id":2,"name":"Caleigh Zulauf PhD","email":"kbechtelar@example.com","created_at":"2024-03-05 15:35:17","updated_at":"2024-03-05 15:35:17"}}'
         headers: []
-        description: ''
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-
-          "message": "Invalid login details"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 422
-        content: |-
-          {
-          "message": "The given data was invalid.",
-          "errors": {
-          "name": ["The name field is required."],
-          "email": ["The email field is required."],
-          "password": ["The password field is required."]
-          }
-        headers: []
-        description: ''
+        description: null
         custom: []
     responseFields: []
     auth: []
@@ -171,7 +141,7 @@ endpoints:
         name: email
         description: 'The email of the user'
         required: true
-        example: omurazik@example.com
+        example: ecorwin@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -180,30 +150,21 @@ endpoints:
         name: password
         description: 'The password of the user'
         required: true
-        example: '9_wa{FV]---i,7m}_Vd'
+        example: "'dalq:7QH#r!"
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      email: omurazik@example.com
-      password: '9_wa{FV]---i,7m}_Vd'
+      email: ecorwin@example.com
+      password: "'dalq:7QH#r!"
     fileParameters: []
     responses:
       -
-        status: 201
-        content: |-
-          {
-          "data": {
-          "id": 1,
-          "name": "John Doe",
-          "email": "jon@example.com"
-          "created_at": "2021-08-12 12:00:00",
-          "updated_at": "2021-08-12 12:00:00"
-          }
-          }
+        status: 200
+        content: '{"data":{"id":2,"name":"Prof. Gordon Runolfsson","email":"mallory.hintz@example.net","created_at":"2024-03-05 15:35:17","updated_at":"2024-03-05 15:35:17"}}'
         headers: []
-        description: ''
+        description: null
         custom: []
       -
         status: 401
@@ -259,7 +220,7 @@ endpoints:
         name: email
         description: 'The email of the user'
         required: true
-        example: donnelly.samson@example.net
+        example: kemmer.guiseppe@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -268,7 +229,7 @@ endpoints:
         name: password
         description: 'The password of the user'
         required: true
-        example: "6VR'CX"
+        example: '#S%s4VQV2Awcxw'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -277,7 +238,7 @@ endpoints:
         name: token
         description: 'The token of the user'
         required: true
-        example: et
+        example: non
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -286,16 +247,16 @@ endpoints:
         name: password_confirmation
         description: 'The password confirmation of the user'
         required: true
-        example: velit
+        example: similique
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      email: donnelly.samson@example.net
-      password: "6VR'CX"
-      token: et
-      password_confirmation: velit
+      email: kemmer.guiseppe@example.org
+      password: '#S%s4VQV2Awcxw'
+      token: non
+      password_confirmation: similique
     fileParameters: []
     responses:
       -
@@ -361,13 +322,13 @@ endpoints:
         name: email
         description: 'The email of the user'
         required: true
-        example: lcasper@example.org
+        example: bartoletti.britney@example.net
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      email: lcasper@example.org
+      email: bartoletti.britney@example.net
     fileParameters: []
     responses:
       -

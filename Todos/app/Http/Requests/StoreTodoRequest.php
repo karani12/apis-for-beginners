@@ -11,7 +11,7 @@ class StoreTodoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class StoreTodoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'priority' => 'nullable|string',
+            'category' => 'nullable|string',
+            'recurring' => 'required|boolean',
+            'interval' => 'nullable|boolean',
+            'archived' => 'nullable|boolean',
+            'completed' => 'nullable|boolean',
+            'completed_at' => 'nullable|date',
+            'due_date' => 'nullable|date',
         ];
     }
 }

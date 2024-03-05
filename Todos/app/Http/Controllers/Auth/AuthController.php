@@ -26,29 +26,7 @@ class AuthController extends Controller
      * @bodyParam password string required The password of the user
      * @bodyParam password_confirmation string required The password confirmation of the user
      * 
-     * @response 201 
-     * "data": {
-     * "id": 1,
-     * "name": "John Doe",
-     * "email": "example@mail.com"
-     * "created_at": "2021-08-12 12:00:00",
-     * "updated_at": "2021-08-12 12:00:00"
-     * }
-     * 
-     * 
-     * @response 422 {
-     * "message": "The given data was invalid.",
-     * "errors": {
-     * "name": ["The name field is required."],
-     * "email": ["The email field is required."],
-     * "password": ["The password field is required."]
-     * }
-     * 
-     * 
-     * @response 401 {
-     * 
-     * "message": "Invalid login details"
-     * }
+     * @transformer \App\Transformers\UserTransformer
      * 
      */
    
@@ -81,14 +59,9 @@ class AuthController extends Controller
      * @bodyParam email string required The email of the user
      * @bodyParam password string required The password of the user
      * 
-     * @response 201 {
-     * "data": {
-     * "id": 1,
-     * "name": "John Doe",
-     * "email": "jon@example.com"
-     * "created_at": "2021-08-12 12:00:00",
-     * "updated_at": "2021-08-12 12:00:00"
-     * }
+     * @transformer \App\Transformers\UserTransformer
+     * @headers {
+     * "Authorization": "Bearer token"
      * }
      * 
      * @response 401 {
@@ -128,6 +101,8 @@ class AuthController extends Controller
 
     /**
      * @group Auth
+     * @authenticated
+     * @bearer
      * 
      * Logout a user
      * 

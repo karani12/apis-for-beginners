@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("auth")->group(function(){
 
-    Route::post("logout", AuthController::class . "@logout");
+    Route::post("logout", AuthController::class . "@logout")->middleware("auth:sanctum");
     Route::post("signup", AuthController::class . "@register");
     Route::post("login", AuthController::class . "@login")->name("login");
     Route::post("reset-password", AuthController::class . "@resetPassword");
     Route::post("forgot-password", AuthController::class . "@forgotPassword");
+});
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::apiResource("todos", TodoController::class);
 });
 
 
