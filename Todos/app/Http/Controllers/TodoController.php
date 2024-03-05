@@ -115,21 +115,5 @@ class TodoController extends Controller
         return response()->json(null, 204);
     }
 
-    public function markCompleted(Todo $todo, TodoTransformer $transformer)
-    {
-        $todo->completed = true;
-        $todo->completed_at = now();
-        $todo->save();
-        $data = fractal($todo, $transformer);
-        return response()->json($data, 200);
-    }
 
-    // archive
-    public function archive(Todo $todo, TodoTransformer $transformer)
-    {
-        $todo->archived = true;
-        $todo->save();
-        $data = fractal($todo, $transformer);
-        return response()->json($data, 200);
-    }
 }

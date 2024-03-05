@@ -2,6 +2,11 @@
 
 This is a simple API to manage a TODO list. It is built using Laravel 10. This API is built to be used with a front-end application.
 
+## Features
+- User authentication
+- Create, read, update and delete tasks
+
+
 ## Installation
 - Clone the repository to your local machine
 - You need to have PHP installed on your machine(version 8.1 or higher)
