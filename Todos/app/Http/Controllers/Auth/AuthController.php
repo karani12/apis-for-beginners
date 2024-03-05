@@ -14,7 +14,24 @@ use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
-    // register method
+    //generate docs for scribe using transformers and request classes
+
+    /**
+     * @group Auth
+     * 
+     * Register a user
+     * 
+     * @bodyParam name string required The name of the user
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required The password of the user
+     * @bodyParam password_confirmation string required The password confirmation of the user
+     * 
+     * @transformer \App\Transformers\UserTransformer
+     * 
+     */
+   
+    
+    
     public function register(SignupRequest $request)
     {
         $request->validated();
@@ -32,7 +49,36 @@ class AuthController extends Controller
             ->header("Access-Control-Expose-Headers", "Authorization");
     }
 
-    // login method
+    // login method use the transformer
+
+    /**
+     * @group Auth
+     * 
+     * Login a user
+     * 
+     * @bodyParam email string required The email of the user
+     * @bodyParam password string required The password of the user
+     * 
+     * @transformer \App\Transformers\UserTransformer
+     * @headers {
+     * "Authorization": "Bearer token"
+     * }
+     * 
+     * @response 401 {
+     * 
+     * "message": "Invalid login details"
+     * }
+     * 
+     * @response 422 {
+     * "message": "The given data was invalid.",
+     * "errors": {
+     * "email": ["The email field is required."],
+     * "password": ["The password field is required."]
+     * }
+     * }
+     * 
+     */
+
 
     public function login(LoginRequest $request)
     {
@@ -53,6 +99,19 @@ class AuthController extends Controller
 
     // logout method
 
+    /**
+     * @group Auth
+     * @authenticated
+     * @bearer
+     * 
+     * Logout a user
+     * 
+     * @response 200 {
+     * "message": "Logged out successfully"
+     * }
+     * 
+     */
+
     public function logout()
     {
         auth()->logout();
@@ -62,6 +121,30 @@ class AuthController extends Controller
     }
 
     //  forgot password method
+
+    /**
+     * @group Auth
+     * 
+     * Forgot password
+     * 
+     * @bodyParam email string required The email of the user
+     * 
+     * @response 200 {
+     * "message": "Password reset link sent to your email"
+     * }
+     * 
+     * @response 422 {
+     * "message": "The given data was invalid.",
+     * "errors": {
+     * "email": ["The email field is required."]
+     * }
+     * }
+     * 
+     * @response 404 {
+     * "message": "We can't find a user with that e-mail address."
+     * }
+     * 
+     */
 
     public function forgotPassword(Request $request)
     {
@@ -77,6 +160,35 @@ class AuthController extends Controller
     }
 
     // reset password method
+
+    /**
+     * @group Auth
+     * 
+     * Reset password
+     * 
+     * @bodyParam email string required The email of the user
+     * @bodyParam token string required The token of the user
+     * @bodyParam password string required The password of the user
+     * @bodyParam password_confirmation string required The password confirmation of the user
+     * 
+     * @response 200 {
+     * "message": "Password has been successfully changed"
+     * }
+     * 
+     * @response 400 {
+     * "message": "Invalid token provided"
+     * }
+     * 
+     * @response 422 {
+     * "message": "The given data was invalid.",
+     * "errors": {
+     * "email": ["The email field is required."],
+     * "token": ["The token field is required."],
+     * "password": ["The password field is required."]
+     * }
+     * }
+     * 
+     */
     public function resetPassword(ResetPasswordRequest $request)
     {
 
@@ -104,4 +216,3 @@ class AuthController extends Controller
         ], 200);
     }
 }
-        // validate the request
