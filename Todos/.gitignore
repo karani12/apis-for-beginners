@@ -2,6 +2,8 @@
 /node_modules
 /public/build
 /public/hot
+/public/docs
+
 /public/storage
 /storage/*.key
 /vendor
@@ -17,3 +19,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+/public/docs
+
